@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Accepter Scientific Number Andrew Tindangen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="background">
+      <h1>Andrew Ulrich Matthew Tindangen</h1>
+      <p>NIM: 221011060083</p>
+      <p>Kelas: SI-B</p>
+    </div>
+    <div class="container">
+      <h2>Apa ini sebuah angka?</h2>
+      <input type="text" id="numberInput" placeholder="Masukkan angka" />
+      <button id="checkButton">Periksa</button>
+      <div id="verificationMessage" class="verification-message"></div>
+    </div>
+
+    <script>
+      const numberInput = document.getElementById("numberInput");
+      const verificationMessage = document.getElementById(
+        "verificationMessage"
+      );
+      const checkButton = document.getElementById("checkButton");
+
+      function verifyInput() {
+        const inputValue = numberInput.value.trim();
+
+        if (inputValue === "") {
+          verificationMessage.textContent = "Anda belum menginputkan apa-apa😯";
+          verificationMessage.style.color = "red";
+        } else {
+          const isNumber = /^[0-9]+$/.test(inputValue);
+
+          if (isNumber) {
+            verificationMessage.textContent = "Input merupakan angka😁👍";
+            verificationMessage.style.color = "green";
+          } else {
+            verificationMessage.textContent = "Input bukan merupakan angka😟❌";
+            verificationMessage.style.color = "red";
+          }
+        }
+      }
+      checkButton.addEventListener("click", verifyInput);
+
+      numberInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          verifyInput();
+        }
+      });
+    </script>
+  </body>
+</html>
